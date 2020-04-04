@@ -41,6 +41,7 @@
             // button1
             // 
             this.button1.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Home_page_background_image;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.BurlyWood;
             this.button1.Location = new System.Drawing.Point(565, 395);
@@ -65,6 +66,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::Perceptron_RedBull_Application.Properties.Resources.red;
             this.pictureBox1.Location = new System.Drawing.Point(10, 275);
             this.pictureBox1.Name = "pictureBox1";
@@ -100,6 +102,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox2.Image = global::Perceptron_RedBull_Application.Properties.Resources.RedBullSugarFree__1_;
             this.pictureBox2.Location = new System.Drawing.Point(164, 275);
             this.pictureBox2.Name = "pictureBox2";
