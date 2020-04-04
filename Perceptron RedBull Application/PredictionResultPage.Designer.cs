@@ -33,17 +33,15 @@
             this.resultRglImgBox = new System.Windows.Forms.PictureBox();
             this.resultSfImgBox = new System.Windows.Forms.PictureBox();
             this.unidentifyImgBox = new System.Windows.Forms.PictureBox();
-            this.sfEditBtn = new System.Windows.Forms.Button();
-            this.rglEditBtn = new System.Windows.Forms.Button();
             this.manualAddBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.unidentifyCountBtnTxt = new System.Windows.Forms.Button();
+            this.rglCountBtnTxt = new System.Windows.Forms.Button();
+            this.sfCountBtnTxt = new System.Windows.Forms.Button();
             this.reportBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.accuracyLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.resultRglImgBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultSfImgBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unidentifyImgBox)).BeginInit();
@@ -65,9 +63,11 @@
             // 
             // resultRglImgBox
             // 
+            this.resultRglImgBox.Image = global::Perceptron_RedBull_Application.Properties.Resources.red;
             this.resultRglImgBox.Location = new System.Drawing.Point(13, 67);
             this.resultRglImgBox.Name = "resultRglImgBox";
             this.resultRglImgBox.Size = new System.Drawing.Size(128, 154);
+            this.resultRglImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.resultRglImgBox.TabIndex = 7;
             this.resultRglImgBox.TabStop = false;
             // 
@@ -90,32 +90,6 @@
             this.unidentifyImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.unidentifyImgBox.TabIndex = 9;
             this.unidentifyImgBox.TabStop = false;
-            // 
-            // sfEditBtn
-            // 
-            this.sfEditBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Result_display_page_background_image;
-            this.sfEditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sfEditBtn.ForeColor = System.Drawing.Color.BurlyWood;
-            this.sfEditBtn.Location = new System.Drawing.Point(292, 266);
-            this.sfEditBtn.Name = "sfEditBtn";
-            this.sfEditBtn.Size = new System.Drawing.Size(128, 29);
-            this.sfEditBtn.TabIndex = 10;
-            this.sfEditBtn.Text = "Edit";
-            this.sfEditBtn.UseVisualStyleBackColor = true;
-            this.sfEditBtn.Click += new System.EventHandler(this.sfEditBtn_Click);
-            // 
-            // rglEditBtn
-            // 
-            this.rglEditBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Result_display_page_background_image;
-            this.rglEditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rglEditBtn.ForeColor = System.Drawing.Color.BurlyWood;
-            this.rglEditBtn.Location = new System.Drawing.Point(13, 266);
-            this.rglEditBtn.Name = "rglEditBtn";
-            this.rglEditBtn.Size = new System.Drawing.Size(128, 29);
-            this.rglEditBtn.TabIndex = 11;
-            this.rglEditBtn.Text = "Edit";
-            this.rglEditBtn.UseVisualStyleBackColor = true;
-            this.rglEditBtn.Click += new System.EventHandler(this.rglEditBtn_Click);
             // 
             // manualAddBtn
             // 
@@ -166,75 +140,75 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Unidentifiable";
             // 
-            // button3
+            // unidentifyCountBtnTxt
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.Enabled = false;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button3.Location = new System.Drawing.Point(564, 227);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(128, 29);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "0";
-            this.button3.UseVisualStyleBackColor = false;
+            this.unidentifyCountBtnTxt.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.unidentifyCountBtnTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("unidentifyCountBtnTxt.BackgroundImage")));
+            this.unidentifyCountBtnTxt.Enabled = false;
+            this.unidentifyCountBtnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.unidentifyCountBtnTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidentifyCountBtnTxt.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.unidentifyCountBtnTxt.Location = new System.Drawing.Point(564, 227);
+            this.unidentifyCountBtnTxt.Name = "unidentifyCountBtnTxt";
+            this.unidentifyCountBtnTxt.Size = new System.Drawing.Size(128, 29);
+            this.unidentifyCountBtnTxt.TabIndex = 18;
+            this.unidentifyCountBtnTxt.Text = "0";
+            this.unidentifyCountBtnTxt.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // rglCountBtnTxt
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.Enabled = false;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button4.Location = new System.Drawing.Point(13, 227);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(128, 29);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "0";
-            this.button4.UseVisualStyleBackColor = false;
+            this.rglCountBtnTxt.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rglCountBtnTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("rglCountBtnTxt.BackgroundImage")));
+            this.rglCountBtnTxt.Enabled = false;
+            this.rglCountBtnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rglCountBtnTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rglCountBtnTxt.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.rglCountBtnTxt.Location = new System.Drawing.Point(13, 227);
+            this.rglCountBtnTxt.Name = "rglCountBtnTxt";
+            this.rglCountBtnTxt.Size = new System.Drawing.Size(128, 29);
+            this.rglCountBtnTxt.TabIndex = 17;
+            this.rglCountBtnTxt.Text = "0";
+            this.rglCountBtnTxt.UseVisualStyleBackColor = false;
             // 
-            // button5
+            // sfCountBtnTxt
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.Enabled = false;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button5.Location = new System.Drawing.Point(292, 227);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(128, 29);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "0";
-            this.button5.UseVisualStyleBackColor = false;
+            this.sfCountBtnTxt.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.sfCountBtnTxt.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sfCountBtnTxt.BackgroundImage")));
+            this.sfCountBtnTxt.Enabled = false;
+            this.sfCountBtnTxt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.sfCountBtnTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sfCountBtnTxt.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.sfCountBtnTxt.Location = new System.Drawing.Point(292, 227);
+            this.sfCountBtnTxt.Name = "sfCountBtnTxt";
+            this.sfCountBtnTxt.Size = new System.Drawing.Size(128, 29);
+            this.sfCountBtnTxt.TabIndex = 16;
+            this.sfCountBtnTxt.Text = "0";
+            this.sfCountBtnTxt.UseVisualStyleBackColor = false;
             // 
             // reportBtn
             // 
             this.reportBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Result_display_page_background_image;
             this.reportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportBtn.ForeColor = System.Drawing.Color.SandyBrown;
-            this.reportBtn.Location = new System.Drawing.Point(421, 394);
+            this.reportBtn.ForeColor = System.Drawing.Color.LightGreen;
+            this.reportBtn.Location = new System.Drawing.Point(394, 394);
             this.reportBtn.Name = "reportBtn";
-            this.reportBtn.Size = new System.Drawing.Size(119, 35);
+            this.reportBtn.Size = new System.Drawing.Size(146, 35);
             this.reportBtn.TabIndex = 19;
-            this.reportBtn.Text = "Report";
+            this.reportBtn.Text = "Out to Excel";
             this.reportBtn.UseVisualStyleBackColor = true;
             this.reportBtn.Click += new System.EventHandler(this.reportBtn_Click);
             // 
-            // label4
+            // accuracyLbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.DarkGray;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 416);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 16);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Accuracy : 84%";
+            this.accuracyLbl.AutoSize = true;
+            this.accuracyLbl.BackColor = System.Drawing.Color.DarkGray;
+            this.accuracyLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accuracyLbl.Location = new System.Drawing.Point(13, 416);
+            this.accuracyLbl.Name = "accuracyLbl";
+            this.accuracyLbl.Size = new System.Drawing.Size(99, 16);
+            this.accuracyLbl.TabIndex = 20;
+            this.accuracyLbl.Text = "Accuracy : 84%";
             // 
             // PredictionResultPage
             // 
@@ -243,17 +217,15 @@
             this.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Result_display_page_background_image;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(704, 441);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.accuracyLbl);
             this.Controls.Add(this.reportBtn);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.unidentifyCountBtnTxt);
+            this.Controls.Add(this.rglCountBtnTxt);
+            this.Controls.Add(this.sfCountBtnTxt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.manualAddBtn);
-            this.Controls.Add(this.rglEditBtn);
-            this.Controls.Add(this.sfEditBtn);
             this.Controls.Add(this.unidentifyImgBox);
             this.Controls.Add(this.resultSfImgBox);
             this.Controls.Add(this.resultRglImgBox);
@@ -277,16 +249,14 @@
         private System.Windows.Forms.PictureBox resultRglImgBox;
         private System.Windows.Forms.PictureBox resultSfImgBox;
         private System.Windows.Forms.PictureBox unidentifyImgBox;
-        private System.Windows.Forms.Button sfEditBtn;
-        private System.Windows.Forms.Button rglEditBtn;
         private System.Windows.Forms.Button manualAddBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button unidentifyCountBtnTxt;
+        private System.Windows.Forms.Button rglCountBtnTxt;
+        private System.Windows.Forms.Button sfCountBtnTxt;
         private System.Windows.Forms.Button reportBtn;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label accuracyLbl;
     }
 }

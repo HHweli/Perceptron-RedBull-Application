@@ -32,12 +32,12 @@
             this.manualEditDoneBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.predictedImgBox = new System.Windows.Forms.PictureBox();
             this.predictingImgNameLbl = new System.Windows.Forms.Label();
             this.errorProviderRglCountTxt = new System.Windows.Forms.ErrorProvider(this.components);
             this.manualCountRglTxt = new System.Windows.Forms.NumericUpDown();
             this.manualCountSfTxt = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.predictedImgBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRglCountTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manualCountRglTxt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manualCountSfTxt)).BeginInit();
@@ -81,16 +81,16 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Sugar Free";
             // 
-            // pictureBox1
+            // predictedImgBox
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Image = global::Perceptron_RedBull_Application.Properties.Resources.redbullvarietyeditionscoverphoto8_4;
-            this.pictureBox1.Location = new System.Drawing.Point(210, 44);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(482, 385);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.predictedImgBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.predictedImgBox.Image = global::Perceptron_RedBull_Application.Properties.Resources.redbullvarietyeditionscoverphoto8_4;
+            this.predictedImgBox.Location = new System.Drawing.Point(210, 44);
+            this.predictedImgBox.Name = "predictedImgBox";
+            this.predictedImgBox.Size = new System.Drawing.Size(482, 385);
+            this.predictedImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.predictedImgBox.TabIndex = 18;
+            this.predictedImgBox.TabStop = false;
             // 
             // predictingImgNameLbl
             // 
@@ -100,9 +100,8 @@
             this.predictingImgNameLbl.ForeColor = System.Drawing.Color.Bisque;
             this.predictingImgNameLbl.Location = new System.Drawing.Point(207, 25);
             this.predictingImgNameLbl.Name = "predictingImgNameLbl";
-            this.predictingImgNameLbl.Size = new System.Drawing.Size(174, 16);
+            this.predictingImgNameLbl.Size = new System.Drawing.Size(0, 16);
             this.predictingImgNameLbl.TabIndex = 19;
-            this.predictingImgNameLbl.Text = "Predicting Image File Name";
             // 
             // errorProviderRglCountTxt
             // 
@@ -144,7 +143,7 @@
             this.Controls.Add(this.manualCountSfTxt);
             this.Controls.Add(this.manualCountRglTxt);
             this.Controls.Add(this.predictingImgNameLbl);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.predictedImgBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.manualEditDoneBtn);
@@ -153,7 +152,8 @@
             this.Name = "ManualEditPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manually Edit Predictions";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.ManualEditPage_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.predictedImgBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRglCountTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manualCountRglTxt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manualCountSfTxt)).EndInit();
@@ -167,7 +167,7 @@
         private System.Windows.Forms.Button manualEditDoneBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox predictedImgBox;
         private System.Windows.Forms.Label predictingImgNameLbl;
         private System.Windows.Forms.ErrorProvider errorProviderRglCountTxt;
         private System.Windows.Forms.NumericUpDown manualCountSfTxt;

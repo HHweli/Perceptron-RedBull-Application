@@ -37,12 +37,15 @@ namespace Perceptron_RedBull_Application
                 // Getting the image file name from path
                 String[] paths = openFile.FileName.Split('\\');
                 String fileName = paths[paths.Length - 1];
-                predictingImgNameLbl.Text = fileName;
-
+                
                 // Saving the predicting image for later use
-                Commons.Resource.bitmap = new Bitmap(openFile.FileName);
+                Commons.Resource.PREDICTING_IMAGE = new Bitmap(openFile.FileName);
 
-                predictingImageBox.Image = Commons.Resource.bitmap;
+                // Saving the predicting image name for later use
+                Commons.Resource.PREDICTING_IMAGE_NAME = fileName;
+
+                predictingImgNameLbl.Text = Commons.Resource.PREDICTING_IMAGE_NAME;
+                predictingImageBox.Image = Commons.Resource.PREDICTING_IMAGE;
 
                 categorizeBtn.Enabled = true;
             }

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="unidentifyCountBtnTxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAgEAAAAAAAD/4QBSRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
         AAcAAAAcAAAALAAAAABMAGEAdgBjADUANQAuADEAOAAuADEAMAAyAAAAAAD/2wBDAAgKCgsKCw0NDQ0N
@@ -583,7 +583,7 @@
         AwIEpKWm0wJYmFFJmloGBNxKKKWgAAKKSikMYhKSikoGSyWFJRSUwJEf/9k=
 </value>
   </data>
-  <data name="button4.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="rglCountBtnTxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAgEAAAAAAAD/4QBSRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
         AAcAAAAcAAAALAAAAABMAGEAdgBjADUANQAuADEAOAAuADEAMAAyAAAAAAD/2wBDAAgKCgsKCw0NDQ0N
@@ -1048,7 +1048,7 @@
         AwIEpKWm0wJYmFFJmloGBNxKKKWgAAKKSikMYhKSikoGSyWFJRSUwJEf/9k=
 </value>
   </data>
-  <data name="button5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="sfCountBtnTxt.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAgEAAAAAAAD/4QBSRXhpZgAATU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAZKG
         AAcAAAAcAAAALAAAAABMAGEAdgBjADUANQAuADEAOAAuADEAMAAyAAAAAAD/2wBDAAgKCgsKCw0NDQ0N
