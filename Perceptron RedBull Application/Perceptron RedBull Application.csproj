@@ -79,5 +79,31 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1.jpg" />
+    <Content Include="Resources\100-1000316_wallpaper-red-bull.jpg" />
+    <Content Include="Resources\1200px-RedBullEnergyDrink.svg.png" />
+    <Content Include="Resources\481882.jpg" />
+    <Content Include="Resources\4818821.jpg" />
+    <Content Include="Resources\4818822.jpg" />
+    <Content Include="Resources\7179436-ghost-recon-online-wallpaper.jpg" />
+    <Content Include="Resources\8defa233de43afe7deba363eb0088188.jpg" />
+    <Content Include="Resources\AwlTXcQ.png" />
+    <Content Include="Resources\AwlTXcQ1.png" />
+    <Content Include="Resources\AwlTXcQ2.png" />
+    <Content Include="Resources\bull.jpg" />
+    <Content Include="Resources\cartoon-red-bull-attack-vector-23797762.jpg" />
+    <Content Include="Resources\download %282%29.jpg" />
+    <Content Include="Resources\download.png" />
+    <Content Include="Resources\red.png" />
+    <Content Include="Resources\red1.png" />
+    <Content Include="Resources\red2.png" />
+    <Content Include="Resources\red3.png" />
+    <Content Include="Resources\RedBullSugarFree %281%29.jpg" />
+    <Content Include="Resources\redbullvarietyeditionscoverphoto8.4.jpg" />
+    <Content Include="Resources\thumb-350-990683.jpg" />
+    <Content Include="Resources\thumb-350-9906831.jpg" />
+    <Content Include="Resources\unnamed.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
