@@ -44,7 +44,7 @@
             this.startBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Home_page_background_image;
             this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startBtn.ForeColor = System.Drawing.Color.BurlyWood;
+            this.startBtn.ForeColor = System.Drawing.Color.SandyBrown;
             this.startBtn.Location = new System.Drawing.Point(565, 395);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(127, 34);
@@ -118,7 +118,7 @@
             this.addCatBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Home_page_background_image;
             this.addCatBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addCatBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addCatBtn.ForeColor = System.Drawing.Color.BurlyWood;
+            this.addCatBtn.ForeColor = System.Drawing.Color.SandyBrown;
             this.addCatBtn.Location = new System.Drawing.Point(319, 329);
             this.addCatBtn.Name = "addCatBtn";
             this.addCatBtn.Size = new System.Drawing.Size(45, 34);

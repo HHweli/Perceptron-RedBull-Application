@@ -16,5 +16,30 @@ namespace Perceptron_RedBull_Application
         {
             InitializeComponent();
         }
+
+        private void rglEditBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sfEditBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void manualAddBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void finishBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reportBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

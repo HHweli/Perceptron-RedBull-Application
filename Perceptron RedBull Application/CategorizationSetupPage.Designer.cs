@@ -41,7 +41,7 @@
             this.categorizeBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Prediction_setup_page_background_image;
             this.categorizeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.categorizeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categorizeBtn.ForeColor = System.Drawing.Color.BurlyWood;
+            this.categorizeBtn.ForeColor = System.Drawing.Color.SandyBrown;
             this.categorizeBtn.Location = new System.Drawing.Point(12, 353);
             this.categorizeBtn.Name = "categorizeBtn";
             this.categorizeBtn.Size = new System.Drawing.Size(143, 35);
