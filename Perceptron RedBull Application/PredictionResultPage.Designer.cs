@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PredictionResultPage));
             this.finishBtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.resultRglImgBox = new System.Windows.Forms.PictureBox();
+            this.resultSfImgBox = new System.Windows.Forms.PictureBox();
+            this.unidentifyImgBox = new System.Windows.Forms.PictureBox();
             this.sfEditBtn = new System.Windows.Forms.Button();
             this.rglEditBtn = new System.Windows.Forms.Button();
             this.manualAddBtn = new System.Windows.Forms.Button();
@@ -44,9 +44,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.reportBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultRglImgBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultSfImgBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidentifyImgBox)).BeginInit();
             this.SuspendLayout();
             // 
             // finishBtn
@@ -63,29 +63,33 @@
             this.finishBtn.UseVisualStyleBackColor = true;
             this.finishBtn.Click += new System.EventHandler(this.finishBtn_Click);
             // 
-            // pictureBox1
+            // resultRglImgBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(13, 67);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 154);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.resultRglImgBox.Location = new System.Drawing.Point(13, 67);
+            this.resultRglImgBox.Name = "resultRglImgBox";
+            this.resultRglImgBox.Size = new System.Drawing.Size(128, 154);
+            this.resultRglImgBox.TabIndex = 7;
+            this.resultRglImgBox.TabStop = false;
             // 
-            // pictureBox2
+            // resultSfImgBox
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(292, 67);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(128, 154);
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
+            this.resultSfImgBox.Image = global::Perceptron_RedBull_Application.Properties.Resources.RedBullSugarFree__1_;
+            this.resultSfImgBox.Location = new System.Drawing.Point(292, 67);
+            this.resultSfImgBox.Name = "resultSfImgBox";
+            this.resultSfImgBox.Size = new System.Drawing.Size(128, 154);
+            this.resultSfImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.resultSfImgBox.TabIndex = 8;
+            this.resultSfImgBox.TabStop = false;
             // 
-            // pictureBox3
+            // unidentifyImgBox
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(564, 67);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(128, 154);
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
+            this.unidentifyImgBox.Image = global::Perceptron_RedBull_Application.Properties.Resources.download__2_;
+            this.unidentifyImgBox.Location = new System.Drawing.Point(564, 67);
+            this.unidentifyImgBox.Name = "unidentifyImgBox";
+            this.unidentifyImgBox.Size = new System.Drawing.Size(128, 154);
+            this.unidentifyImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.unidentifyImgBox.TabIndex = 9;
+            this.unidentifyImgBox.TabStop = false;
             // 
             // sfEditBtn
             // 
@@ -174,7 +178,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(128, 29);
             this.button3.TabIndex = 18;
-            this.button3.Text = "000";
+            this.button3.Text = "0";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // button4
@@ -189,7 +193,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(128, 29);
             this.button4.TabIndex = 17;
-            this.button4.Text = "000";
+            this.button4.Text = "0";
             this.button4.UseVisualStyleBackColor = false;
             // 
             // button5
@@ -204,7 +208,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(128, 29);
             this.button5.TabIndex = 16;
-            this.button5.Text = "000";
+            this.button5.Text = "0";
             this.button5.UseVisualStyleBackColor = false;
             // 
             // reportBtn
@@ -250,17 +254,19 @@
             this.Controls.Add(this.manualAddBtn);
             this.Controls.Add(this.rglEditBtn);
             this.Controls.Add(this.sfEditBtn);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.unidentifyImgBox);
+            this.Controls.Add(this.resultSfImgBox);
+            this.Controls.Add(this.resultRglImgBox);
             this.Controls.Add(this.finishBtn);
             this.MaximumSize = new System.Drawing.Size(720, 480);
             this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "PredictionResultPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prediction Result";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.Load += new System.EventHandler(this.PredictionResultPage_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.resultRglImgBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultSfImgBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidentifyImgBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,9 +274,9 @@
 
         #endregion
         private System.Windows.Forms.Button finishBtn;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox resultRglImgBox;
+        private System.Windows.Forms.PictureBox resultSfImgBox;
+        private System.Windows.Forms.PictureBox unidentifyImgBox;
         private System.Windows.Forms.Button sfEditBtn;
         private System.Windows.Forms.Button rglEditBtn;
         private System.Windows.Forms.Button manualAddBtn;

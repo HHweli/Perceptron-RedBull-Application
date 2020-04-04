@@ -144,6 +144,7 @@
             this.MaximumSize = new System.Drawing.Size(720, 480);
             this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "HomePage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Red Bull Product Categorization Application";
             this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

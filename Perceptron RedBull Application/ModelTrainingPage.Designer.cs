@@ -109,6 +109,7 @@
             this.MaximumSize = new System.Drawing.Size(720, 480);
             this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "ModelTrainingPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Training Center";
             this.Load += new System.EventHandler(this.ModelTrainingPage_Load);
             this.ResumeLayout(false);

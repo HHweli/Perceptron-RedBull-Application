@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Perceptron_RedBull_Application
@@ -29,17 +22,27 @@ namespace Perceptron_RedBull_Application
 
         private void manualAddBtn_Click(object sender, EventArgs e)
         {
-
+            Form editPage = new ManualEditPage();
+            editPage.Show();
         }
 
         private void finishBtn_Click(object sender, EventArgs e)
         {
-
+            Form homePage = new HomePage();
+            this.Hide();
+            homePage.ShowDialog();
+            this.Close();
         }
 
         private void reportBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void PredictionResultPage_Load(object sender, EventArgs e)
+        {
+            resultRglImgBox.Image = Commons.Resource.bitmap;
+            resultRglImgBox.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }

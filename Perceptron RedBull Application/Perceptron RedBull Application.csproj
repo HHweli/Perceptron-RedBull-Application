@@ -52,11 +52,18 @@
     <Compile Include="CategorizationSetupPage.Designer.cs">
       <DependentUpon>CategorizationSetupPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Commons\Resource.cs" />
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManualEditPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManualEditPage.Designer.cs">
+      <DependentUpon>ManualEditPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelTrainingPage.cs">
       <SubType>Form</SubType>
@@ -72,11 +79,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\Valid.cs" />
     <EmbeddedResource Include="CategorizationSetupPage.resx">
       <DependentUpon>CategorizationSetupPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManualEditPage.resx">
+      <DependentUpon>ManualEditPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModelTrainingPage.resx">
       <DependentUpon>ModelTrainingPage.cs</DependentUpon>
