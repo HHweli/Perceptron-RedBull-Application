@@ -64,6 +64,12 @@
     <Compile Include="ModelTrainingPage.Designer.cs">
       <DependentUpon>ModelTrainingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="PredictionResultPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PredictionResultPage.Designer.cs">
+      <DependentUpon>PredictionResultPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CategorizationSetupPage.resx">
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModelTrainingPage.resx">
       <DependentUpon>ModelTrainingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PredictionResultPage.resx">
+      <DependentUpon>PredictionResultPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
