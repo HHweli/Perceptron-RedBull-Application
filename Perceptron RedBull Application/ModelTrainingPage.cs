@@ -48,11 +48,9 @@ namespace Perceptron_RedBull_Application
 
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                string[] paths = Directory.EnumerateFiles(folderBrowser.SelectedPath, "*.*", SearchOption.AllDirectories)
+                string[] files = Directory.EnumerateFiles(folderBrowser.SelectedPath, "*.*", SearchOption.AllDirectories)
                     .Where(file => file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".png") || file.ToLower().EndsWith(".jpeg"))
                     .ToArray();
-
-                string[] files = Directory.GetFiles(folderBrowser.SelectedPath);
 
                 if (files.Length > 0)
                 {
@@ -61,11 +59,6 @@ namespace Perceptron_RedBull_Application
                 else
                 {
                     MessageBox.Show("There must be atleast one image file in the folder!\nAllowed only .jpg .jpeg .png", "Training Image Set");
-                }
-
-                foreach (string s in paths)
-                {
-                    Console.WriteLine(s);
                 }
             }
         }
