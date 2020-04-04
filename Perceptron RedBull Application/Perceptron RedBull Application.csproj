@@ -107,5 +107,8 @@
     <Content Include="Resources\thumb-350-9906831.jpg" />
     <Content Include="Resources\unnamed.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
