@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -95,6 +96,7 @@
     <Content Include="Resources\cartoon-red-bull-attack-vector-23797762.jpg" />
     <Content Include="Resources\download %282%29.jpg" />
     <Content Include="Resources\download.png" />
+    <None Include="Resources\Home page background image.jpg" />
     <Content Include="Resources\red.png" />
     <Content Include="Resources\red1.png" />
     <Content Include="Resources\red2.png" />
