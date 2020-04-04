@@ -54,6 +54,7 @@
             this.addTrainingImgBtn.TabIndex = 1;
             this.addTrainingImgBtn.Text = "Add Image Set";
             this.addTrainingImgBtn.UseVisualStyleBackColor = true;
+            this.addTrainingImgBtn.Click += new System.EventHandler(this.addTrainingImgBtn_Click);
             // 
             // trainBtn
             // 

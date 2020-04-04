@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Perceptron_RedBull_Application.Commons
 {
@@ -11,6 +7,8 @@ namespace Perceptron_RedBull_Application.Commons
     {
         public static Bitmap PREDICTING_IMAGE = null;
         public static string PREDICTING_IMAGE_NAME = "";
+
+        public static String[] TRAINING_IMAGE_SET = null;
 
         public static int REGULAR_COUNT = 0;
         public static int SUGAR_FREE_COUNT = 0;
