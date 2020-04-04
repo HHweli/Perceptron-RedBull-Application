@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Perceptron_RedBull_Application
 {
@@ -29,7 +32,63 @@ namespace Perceptron_RedBull_Application
 
         private void reportBtn_Click(object sender, EventArgs e)
         {
-            // generate a excel sheet with the predicted final counts.
+            Excel.Application xlApp = new Excel.Application();
+
+            if (xlApp == null)
+            {
+                MessageBox.Show("Excel is not properly installed!", "Excel Report");
+            }
+            else
+            {
+                object misValue = System.Reflection.Missing.Value;
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Add();
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                try
+                {
+                    xlWorkSheet.Range[xlWorkSheet.Cells[1, 1], xlWorkSheet.Cells[1, 3]].Merge();
+
+                    xlWorkSheet.Cells[1, 1] = "RedBull Category Counts";
+
+                    xlWorkSheet.Cells[2, 1] = "Regular";
+                    xlWorkSheet.Cells[2, 2] = "Sugar Free";
+                    xlWorkSheet.Cells[2, 3] = "Unidentified";
+                    xlWorkSheet.Cells[5, 1] = "Accuracy(%)";
+
+                    xlWorkSheet.Cells[3, 1] = Commons.Resource.REGULAR_COUNT;
+                    xlWorkSheet.Cells[3, 2] = Commons.Resource.SUGAR_FREE_COUNT;
+                    xlWorkSheet.Cells[3, 3] = Commons.Resource.UNIDENTIFIED_COUNT;
+                    xlWorkSheet.Cells[5, 2] = Commons.Resource.PREDICTION_ACCURACY;
+
+                    //xlWorkBook.SaveAs(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\RedBull Category Count.xls",
+                    //    Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive,
+                    //    misValue, misValue, misValue, misValue, misValue);
+
+                    //MessageBox.Show("Excel file was created in Documents folder!", "Excel Report");
+
+                    xlWorkBook.Close(true, misValue, misValue);
+                    xlApp.Quit();
+
+                    Marshal.ReleaseComObject(xlWorkSheet);
+                    Marshal.ReleaseComObject(xlWorkBook);
+                    Marshal.ReleaseComObject(xlApp);
+
+                    MessageBox.Show("Excel file was created in Documents folder!", "Excel Report");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An Error Occurred!", "Excel Report");
+                }
+                //finally
+                //{
+                //    xlWorkBook.Close(true, misValue, misValue);
+                //    xlApp.Quit();
+
+                //    Marshal.ReleaseComObject(xlWorkSheet);
+                //    Marshal.ReleaseComObject(xlWorkBook);
+                //    Marshal.ReleaseComObject(xlApp);
+                //}
+            }
         }
 
         private void PredictionResultPage_Load(object sender, EventArgs e)
