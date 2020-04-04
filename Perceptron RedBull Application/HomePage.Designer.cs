@@ -64,6 +64,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = global::Perceptron_RedBull_Application.Properties.Resources.red;
             this.pictureBox1.Location = new System.Drawing.Point(10, 275);
             this.pictureBox1.Name = "pictureBox1";
@@ -98,6 +99,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Image = global::Perceptron_RedBull_Application.Properties.Resources.RedBullSugarFree__1_;
             this.pictureBox2.Location = new System.Drawing.Point(164, 275);
             this.pictureBox2.Name = "pictureBox2";
