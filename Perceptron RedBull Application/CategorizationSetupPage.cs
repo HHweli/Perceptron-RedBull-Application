@@ -16,5 +16,10 @@ namespace Perceptron_RedBull_Application
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

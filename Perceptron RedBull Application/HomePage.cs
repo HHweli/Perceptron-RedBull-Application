@@ -21,5 +21,13 @@ namespace Perceptron_RedBull_Application
         {
 
         }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            Form categorizationSetupForm = new CategorizationSetupPage();
+            this.Hide();
+            categorizationSetupForm.ShowDialog();
+            this.Close();
+        }
     }
 }
