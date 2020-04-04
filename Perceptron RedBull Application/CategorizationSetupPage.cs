@@ -17,9 +17,17 @@ namespace Perceptron_RedBull_Application
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void categorizeBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void catSetupBackBtn_Click(object sender, EventArgs e)
+        {
+            Form homePage = new HomePage();
+            this.Hide();
+            homePage.ShowDialog();
+            this.Close();
         }
     }
 }

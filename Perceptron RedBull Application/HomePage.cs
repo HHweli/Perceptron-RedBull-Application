@@ -29,5 +29,13 @@ namespace Perceptron_RedBull_Application
             categorizationSetupForm.ShowDialog();
             this.Close();
         }
+
+        private void addNewCatBtn_Click(object sender, EventArgs e)
+        {
+            Form modelTrainingForm = new ModelTrainingPage();
+            this.Hide();
+            modelTrainingForm.ShowDialog();
+            this.Close();
+        }
     }
 }

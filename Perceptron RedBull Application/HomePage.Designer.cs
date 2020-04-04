@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.addCatBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +113,20 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
+            // addCatBtn
+            // 
+            this.addCatBtn.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Home_page_background_image;
+            this.addCatBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addCatBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCatBtn.ForeColor = System.Drawing.Color.BurlyWood;
+            this.addCatBtn.Location = new System.Drawing.Point(319, 329);
+            this.addCatBtn.Name = "addCatBtn";
+            this.addCatBtn.Size = new System.Drawing.Size(45, 34);
+            this.addCatBtn.TabIndex = 6;
+            this.addCatBtn.Text = "+";
+            this.addCatBtn.UseVisualStyleBackColor = true;
+            this.addCatBtn.Click += new System.EventHandler(this.addNewCatBtn_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +134,7 @@
             this.BackgroundImage = global::Perceptron_RedBull_Application.Properties.Resources.Home_page_background_image;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(704, 441);
+            this.Controls.Add(this.addCatBtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
@@ -145,6 +161,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button addCatBtn;
     }
 }
 
