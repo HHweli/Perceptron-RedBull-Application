@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perceptron RedBull Application", "Perceptron RedBull Application\Perceptron RedBull Application.csproj", "{3DB127A8-714D-4396-8BE3-38B97479FA08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DB127A8-714D-4396-8BE3-38B97479FA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB127A8-714D-4396-8BE3-38B97479FA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB127A8-714D-4396-8BE3-38B97479FA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB127A8-714D-4396-8BE3-38B97479FA08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66D67345-AC19-408E-9567-2EE739CF70FD}
+	EndGlobalSection
+EndGlobal
