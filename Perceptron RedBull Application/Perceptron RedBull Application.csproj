@@ -142,6 +142,7 @@
     <Compile Include="ManualEditPage.Designer.cs">
       <DependentUpon>ManualEditPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ML\Const\ML_Path.cs" />
     <Compile Include="ML\CustomType\ImageData.cs" />
     <Compile Include="ML\CustomType\ImagePrediction.cs" />
     <Compile Include="ML\Service\ModelTrainer.cs" />

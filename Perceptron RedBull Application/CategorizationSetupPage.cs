@@ -18,7 +18,7 @@ namespace Perceptron_RedBull_Application
             string trainImageFolder = Path.Combine(Environment.CurrentDirectory, "ML", "Data_Set_Train");
             string testImageFolder = Path.Combine(Environment.CurrentDirectory, "Data_Set_Test");
 
-            Predictor.Predict(ModelTrainer.Train(trainImageFolder), testImageFolder);
+            Predictor.Predict(ModelTrainer.Train());
 
             Form resultPage = new PredictionResultPage();
             this.Hide();

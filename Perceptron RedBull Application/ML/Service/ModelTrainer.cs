@@ -4,14 +4,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Perceptron_RedBull_Application.ML.Const;
 
 namespace Perceptron_RedBull_Application.ML.Service
 {
     class ModelTrainer
     {
-        public static PredictionEngine<ImageData, ImagePrediction> Train(string directoryPath)
+        public static PredictionEngine<ImageData, ImagePrediction> Train()
         {
-            string[] files = Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(ML_Path.TRAIN_DATA_SET, "*", SearchOption.AllDirectories);
 
             IEnumerable<ImageData> images = files.Select(file => new ImageData
             {
