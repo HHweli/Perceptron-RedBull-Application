@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Perceptron_RedBull_Application.ML.Service;
+using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Perceptron_RedBull_Application
@@ -13,6 +15,11 @@ namespace Perceptron_RedBull_Application
 
         private void categorizeBtn_Click(object sender, EventArgs e)
         {
+            string trainImageFolder = Path.Combine(Environment.CurrentDirectory, "ML", "Data_Set_Train");
+            string testImageFolder = Path.Combine(Environment.CurrentDirectory, "Data_Set_Test");
+
+            Predictor.Predict(ModelTrainer.Train(trainImageFolder), testImageFolder);
+
             Form resultPage = new PredictionResultPage();
             this.Hide();
             resultPage.ShowDialog();
