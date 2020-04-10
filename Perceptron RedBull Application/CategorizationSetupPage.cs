@@ -15,9 +15,6 @@ namespace Perceptron_RedBull_Application
 
         private void categorizeBtn_Click(object sender, EventArgs e)
         {
-            string trainImageFolder = Path.Combine(Environment.CurrentDirectory, "ML", "Data_Set_Train");
-            string testImageFolder = Path.Combine(Environment.CurrentDirectory, "Data_Set_Test");
-
             Predictor.Predict(ModelTrainer.Train());
 
             Form resultPage = new PredictionResultPage();
