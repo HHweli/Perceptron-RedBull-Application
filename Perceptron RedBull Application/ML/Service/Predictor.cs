@@ -10,8 +10,10 @@ namespace Perceptron_RedBull_Application.ML.Service
 {
     class Predictor
     {
-        public static ModelOutput ClassifySingleImage(ITransformer trainedModel)
+        public static ModelOutput ClassifySingleImage(string imagePath, ITransformer trainedModel)
         {
+            Console.WriteLine(imagePath);
+
             var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
             var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets");
 

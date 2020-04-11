@@ -19,7 +19,11 @@ namespace Perceptron_RedBull_Application
 
         private void HomePage_Load(object sender, EventArgs e)
         {
+            Commons.Resource.REGULAR_COUNT = 0;
+            Commons.Resource.SUGAR_FREE_COUNT = 0;
+            Commons.Resource.UNIDENTIFIED_COUNT = 0;
 
+            Commons.Resource.PREDICTION_ACCURACY = 0.0;
         }
 
         private void startBtn_Click(object sender, EventArgs e)

@@ -6,6 +6,7 @@ namespace Perceptron_RedBull_Application.Commons
     static class Resource
     {
         public static Bitmap PREDICTING_IMAGE = null;
+        public static string PREDICTING_IMAGE_PATH = "";
         public static string PREDICTING_IMAGE_NAME = "";
 
         public static String[] TRAINING_IMAGE_SET = null;
