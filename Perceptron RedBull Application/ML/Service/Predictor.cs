@@ -9,48 +9,45 @@ namespace Perceptron_RedBull_Application.ML.Service
 {
     class Predictor
     {
-        public static ModelOutput ClassifySingleImage(string imagePath)
+        public static ModelOutput ClassifySingleImage(string imagePath, ITransformer trainedModel)
         {
             Console.WriteLine(imagePath);
 
             var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
             var workspaceRelativePath = Path.Combine(projectDirectory, "ML", "Workspace");
-            var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets");
 
             MLContext mlContext = new MLContext();
 
-            IEnumerable<ImageData> images = LoadImagesFromDirectory(folder: assetsRelativePath, useFolderNameAsLabel: true);
+            //IEnumerable<ImageData> images = LoadImagesFromDirectory(folder: assetsRelativePath, useFolderNameAsLabel: true);
+            IEnumerable<ImageData> image = LoadImage(file: imagePath);
 
-            IDataView imageData = mlContext.Data.LoadFromEnumerable(images);
+            if (image.Contains(null))
+                return null;
 
-            IDataView shuffledData = mlContext.Data.ShuffleRows(imageData);
+            IDataView imageData = mlContext.Data.LoadFromEnumerable(image);
 
             var preprocessingPipeline = mlContext.Transforms.Conversion.MapValueToKey(
                     inputColumnName: "Label",
                     outputColumnName: "LabelAsKey")
                 .Append(mlContext.Transforms.LoadRawImageBytes(
                     outputColumnName: "Image",
-                    imageFolder: assetsRelativePath,
+                    imageFolder: Directory.GetParent(imagePath).Name,
                     inputColumnName: "ImagePath"));
 
             IDataView data = preprocessingPipeline
-                                .Fit(shuffledData)
-                                .Transform(shuffledData);
-
-            //TrainTestData trainSplit = mlContext.Data.TrainTestSplit(data: preProcessedData, testFraction: 1);
-
-            //IDataView data = trainSplit.TestSet;
+                                .Fit(imageData)
+                                .Transform(imageData);
 
             DataViewSchema modelSchema;
             ITransformer model = mlContext.Model.Load(workspaceRelativePath + "\\redbull-model.zip", out modelSchema);
 
-            PredictionEngine<ModelInput, ModelOutput> predictionEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(model);
+            PredictionEngine<ModelInput, ModelOutput> predictionEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(trainedModel);
 
             try
             {
-                ModelInput image = mlContext.Data.CreateEnumerable<ModelInput>(data, reuseRowObject: true).First();
+                ModelInput inputImage = mlContext.Data.CreateEnumerable<ModelInput>(data, reuseRowObject: true).First();
 
-                ModelOutput prediction = predictionEngine.Predict(image);
+                ModelOutput prediction = predictionEngine.Predict(inputImage);
 
                 Console.WriteLine("Classifying single image");
                 OutputPrediction(prediction);
@@ -87,8 +84,7 @@ namespace Perceptron_RedBull_Application.ML.Service
 
         public static IEnumerable<ImageData> LoadImagesFromDirectory(string folder, bool useFolderNameAsLabel = true)
         {
-            var files = Directory.GetFiles(folder, "*",
-                searchOption: SearchOption.AllDirectories);
+            var files = Directory.GetFiles(folder, "*", searchOption: SearchOption.AllDirectories);
 
             foreach (var file in files)
             {
@@ -117,6 +113,34 @@ namespace Perceptron_RedBull_Application.ML.Service
                     Label = label
                 };
             }
+        }
+
+        public static IEnumerable<ImageData> LoadImage(string file, bool useFolderNameAsLabel = false)
+        {
+            if ((Path.GetExtension(file) != ".jpg") && (Path.GetExtension(file) != ".png"))
+                yield return null;
+
+            var label = Path.GetFileName(file);
+
+            if (useFolderNameAsLabel)
+                label = Directory.GetParent(file).Name;
+            else
+            {
+                for (int index = 0; index < label.Length; index++)
+                {
+                    if (!char.IsLetter(label[index]))
+                    {
+                        label = label.Substring(0, index);
+                        break;
+                    }
+                }
+            }
+
+            yield return new ImageData()
+            {
+                ImagePath = file,
+                Label = label
+            };
         }
     }
 }

@@ -16,16 +16,17 @@ namespace Perceptron_RedBull_Application
 
         private void categorizeBtn_Click(object sender, EventArgs e)
         {
-            ModelOutput prediction = Predictor.ClassifySingleImage(Commons.Resource.PREDICTING_IMAGE_PATH);
+            ModelOutput prediction = Predictor.ClassifySingleImage(Commons.Resource.PREDICTING_IMAGE_PATH, ModelTrainer.Train());
+            
+            string predictedLabel = prediction != null ? prediction.PredictedLabel : "";
 
-            string predictedLabel = prediction.PredictedLabel;
-
-            Console.WriteLine("predicted label -> " + predictedLabel);
-
+            Console.WriteLine("debug -> " + predictedLabel);
             if (predictedLabel.Equals(Commons.Resource.SUGAR_FREE))
                 Commons.Resource.SUGAR_FREE_COUNT += 1;
             else if (predictedLabel.Equals(Commons.Resource.REGULAR))
                 Commons.Resource.REGULAR_COUNT += 1;
+            else
+                Commons.Resource.UNIDENTIFIED_COUNT += 1;
 
             Form resultPage = new PredictionResultPage();
             this.Hide();
@@ -44,7 +45,7 @@ namespace Perceptron_RedBull_Application
         private void addPredictImgBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Image files ((*.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.bmp) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png, *.bmp";
+            openFile.Filter = "Image files ((*.jpg, *.png) | *.jpg; *.png";
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {

@@ -62,7 +62,7 @@ namespace Perceptron_RedBull_Application.ML.Service
 
             ITransformer trainedModel = trainingPipeline.Fit(trainSet);
 
-            mlContext.Model.Save(trainedModel, preProcessedData.Schema, workspaceRelativePath + "\\redbull-model.zip");
+            mlContext.Model.Save(trainedModel, imageData.Schema, workspaceRelativePath + "\\redbull-model.zip");
 
             return trainedModel;
         }
