@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static Microsoft.ML.DataOperationsCatalog;
 
 namespace Perceptron_RedBull_Application.ML.Service
 {
