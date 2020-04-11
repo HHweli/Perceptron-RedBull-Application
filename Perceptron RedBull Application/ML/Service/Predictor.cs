@@ -9,11 +9,12 @@ namespace Perceptron_RedBull_Application.ML.Service
 {
     class Predictor
     {
-        public static ModelOutput ClassifySingleImage(string imagePath, ITransformer trainedModel)
+        public static ModelOutput ClassifySingleImage(string imagePath)
         {
             Console.WriteLine(imagePath);
 
             var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
+            var workspaceRelativePath = Path.Combine(projectDirectory, "ML", "Workspace");
             var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets");
 
             MLContext mlContext = new MLContext();
@@ -40,7 +41,10 @@ namespace Perceptron_RedBull_Application.ML.Service
 
             //IDataView data = trainSplit.TestSet;
 
-            PredictionEngine<ModelInput, ModelOutput> predictionEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(trainedModel);
+            DataViewSchema modelSchema;
+            ITransformer model = mlContext.Model.Load(workspaceRelativePath + "\\redbull-model.zip", out modelSchema);
+
+            PredictionEngine<ModelInput, ModelOutput> predictionEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(model);
 
             try
             {

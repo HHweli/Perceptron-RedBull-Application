@@ -68,6 +68,7 @@
             this.trainBtn.TabIndex = 2;
             this.trainBtn.Text = "Train";
             this.trainBtn.UseVisualStyleBackColor = true;
+            this.trainBtn.Click += new System.EventHandler(this.trainBtn_Click);
             // 
             // label1
             // 

@@ -11,6 +11,9 @@ namespace Perceptron_RedBull_Application.Commons
 
         public static String[] TRAINING_IMAGE_SET = null;
 
+        public static string REGULAR = "RG";
+        public static string SUGAR_FREE = "SF";
+
         public static int REGULAR_COUNT = 0;
         public static int SUGAR_FREE_COUNT = 0;
         public static int UNIDENTIFIED_COUNT = 0;

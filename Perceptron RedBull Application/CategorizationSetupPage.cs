@@ -1,4 +1,5 @@
-﻿using Perceptron_RedBull_Application.ML.CustomType;
+﻿using Microsoft.ML;
+using Perceptron_RedBull_Application.ML.CustomType;
 using Perceptron_RedBull_Application.ML.Service;
 using System;
 using System.Drawing;
@@ -15,15 +16,15 @@ namespace Perceptron_RedBull_Application
 
         private void categorizeBtn_Click(object sender, EventArgs e)
         {
-            ModelOutput prediction = Predictor.ClassifySingleImage(Commons.Resource.PREDICTING_IMAGE_PATH, ModelTrainer.Train());
+            ModelOutput prediction = Predictor.ClassifySingleImage(Commons.Resource.PREDICTING_IMAGE_PATH);
 
             string predictedLabel = prediction.PredictedLabel;
 
             Console.WriteLine("predicted label -> " + predictedLabel);
 
-            if (predictedLabel.Equals("SF"))
+            if (predictedLabel.Equals(Commons.Resource.SUGAR_FREE))
                 Commons.Resource.SUGAR_FREE_COUNT += 1;
-            else if (predictedLabel.Equals("RG"))
+            else if (predictedLabel.Equals(Commons.Resource.REGULAR))
                 Commons.Resource.REGULAR_COUNT += 1;
 
             Form resultPage = new PredictionResultPage();
