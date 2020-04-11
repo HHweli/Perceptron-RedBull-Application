@@ -15,7 +15,7 @@ namespace Perceptron_RedBull_Application.ML.Service
         {
             var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
             var workspaceRelativePath = Path.Combine(projectDirectory, "ML", "Workspace");
-            var assetsRelativePath = Path.Combine(projectDirectory, "assets");
+            var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets");
 
             MLContext mlContext = new MLContext();
 
@@ -40,16 +40,9 @@ namespace Perceptron_RedBull_Application.ML.Service
             TrainTestData trainSplit = mlContext.Data.TrainTestSplit(data: preProcessedData, testFraction: 0.2);
             TrainTestData validationTestSplit = mlContext.Data.TrainTestSplit(trainSplit.TestSet);
 
-            Console.WriteLine("trainSplit.TrainSet - " + trainSplit.TrainSet.Preview());
-            Console.WriteLine("validationTestSplit.TrainSet - " + validationTestSplit.TrainSet.Preview());
-
             IDataView trainSet = trainSplit.TrainSet;
             IDataView validationSet = validationTestSplit.TrainSet;
             IDataView testSet = validationTestSplit.TestSet;
-
-            Console.WriteLine("trainSet - " + trainSet.Preview());
-            Console.WriteLine("validationSet - " + validationSet.Preview());
-            Console.WriteLine("testSet - " + testSet.Preview());
 
             var classifierOptions = new ImageClassificationTrainer.Options()
             {

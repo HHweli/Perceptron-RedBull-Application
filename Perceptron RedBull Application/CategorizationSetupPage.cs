@@ -1,4 +1,5 @@
-﻿using Perceptron_RedBull_Application.ML.Service;
+﻿using Perceptron_RedBull_Application.ML.CustomType;
+using Perceptron_RedBull_Application.ML.Service;
 using System;
 using System.Drawing;
 using System.IO;
@@ -15,7 +16,11 @@ namespace Perceptron_RedBull_Application
 
         private void categorizeBtn_Click(object sender, EventArgs e)
         {
-            Predictor.ClassifySingleImage(ModelTrainer.Train());
+            ModelOutput prediction = Predictor.ClassifySingleImage(ModelTrainer.Train());
+
+            string predictedLabel = prediction.PredictedLabel;
+
+            Console.WriteLine("predicted label -> " + predictedLabel);
 
             Form resultPage = new PredictionResultPage();
             this.Hide();

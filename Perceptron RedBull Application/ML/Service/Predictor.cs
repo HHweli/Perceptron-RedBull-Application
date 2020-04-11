@@ -4,13 +4,41 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using static Microsoft.ML.DataOperationsCatalog;
 
 namespace Perceptron_RedBull_Application.ML.Service
 {
     class Predictor
     {
-        public static ModelOutput ClassifySingleImage(MLContext mlContext, IDataView data, ITransformer trainedModel)
+        public static ModelOutput ClassifySingleImage(ITransformer trainedModel)
         {
+            var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
+            var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets");
+
+            MLContext mlContext = new MLContext();
+
+            IEnumerable<ImageData> images = LoadImagesFromDirectory(folder: assetsRelativePath, useFolderNameAsLabel: true);
+
+            IDataView imageData = mlContext.Data.LoadFromEnumerable(images);
+
+            IDataView shuffledData = mlContext.Data.ShuffleRows(imageData);
+
+            var preprocessingPipeline = mlContext.Transforms.Conversion.MapValueToKey(
+                    inputColumnName: "Label",
+                    outputColumnName: "LabelAsKey")
+                .Append(mlContext.Transforms.LoadRawImageBytes(
+                    outputColumnName: "Image",
+                    imageFolder: assetsRelativePath,
+                    inputColumnName: "ImagePath"));
+
+            IDataView data = preprocessingPipeline
+                                .Fit(shuffledData)
+                                .Transform(shuffledData);
+
+            //TrainTestData trainSplit = mlContext.Data.TrainTestSplit(data: preProcessedData, testFraction: 1);
+
+            //IDataView data = trainSplit.TestSet;
+
             PredictionEngine<ModelInput, ModelOutput> predictionEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(trainedModel);
 
             try
