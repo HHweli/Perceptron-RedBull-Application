@@ -15,7 +15,7 @@ namespace Perceptron_RedBull_Application
 
         private void categorizeBtn_Click(object sender, EventArgs e)
         {
-            Predictor.Predict(ModelTrainer.Train());
+            Predictor.ClassifySingleImage(ModelTrainer.Train());
 
             Form resultPage = new PredictionResultPage();
             this.Hide();

@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.ML.1.4.0\build\netstandard2.0\Microsoft.ML.props" Condition="Exists('..\packages\Microsoft.ML.1.4.0\build\netstandard2.0\Microsoft.ML.props')" />
   <Import Project="..\packages\Microsoft.ML.CpuMath.1.4.0\build\netstandard2.0\Microsoft.ML.CpuMath.props" Condition="Exists('..\packages\Microsoft.ML.CpuMath.1.4.0\build\netstandard2.0\Microsoft.ML.CpuMath.props')" />
+  <Import Project="..\packages\SciSharp.TensorFlow.Redist.1.15.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props" Condition="Exists('..\packages\SciSharp.TensorFlow.Redist.1.15.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -74,6 +75,9 @@
     <Reference Include="Microsoft.ML.DataView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ML.DataView.1.4.0\lib\netstandard2.0\Microsoft.ML.DataView.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ML.ImageAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ML.ImageAnalytics.1.4.0\lib\netstandard2.0\Microsoft.ML.ImageAnalytics.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ML.KMeansClustering, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ML.1.4.0\lib\netstandard2.0\Microsoft.ML.KMeansClustering.dll</HintPath>
     </Reference>
@@ -109,6 +113,9 @@
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.FileSystem.AccessControl, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.AccessControl.4.5.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
     </Reference>
@@ -166,15 +173,10 @@
     </Compile>
     <Compile Include="ML\Const\ML_Path.cs" />
     <Compile Include="ML\CustomType\ImageData.cs" />
-    <Compile Include="ML\CustomType\ImagePrediction.cs" />
+    <Compile Include="ML\CustomType\ModelInput.cs" />
+    <Compile Include="ML\CustomType\ModelOutput.cs" />
     <Compile Include="ML\Service\ModelTrainer.cs" />
     <Compile Include="ML\Service\Predictor.cs" />
-    <Compile Include="ModelTrainingPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelTrainingPage.Designer.cs">
-      <DependentUpon>ModelTrainingPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="PredictionResultPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,9 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManualEditPage.resx">
       <DependentUpon>ManualEditPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModelTrainingPage.resx">
-      <DependentUpon>ModelTrainingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PredictionResultPage.resx">
       <DependentUpon>PredictionResultPage.cs</DependentUpon>
@@ -224,32 +223,36 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ML\Data_Set_Test\caf---redbull-like4like-l4l-mateus-martins.jpg" />
-    <Content Include="ML\Data_Set_Test\image.jpg" />
-    <Content Include="ML\Data_Set_Test\images.jpg" />
-    <Content Include="ML\Data_Set_Test\L2836633.JPG" />
-    <Content Include="ML\Data_Set_Test\RED1004_9.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\1l-image-Redbull.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\3343212692_2315148fd1_z.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\7dce1130c5e4e24baeef958ed23baa4a7fa0b8b6.JPG" />
-    <Content Include="ML\Data_Set_Train\Regular\cdn.i.haymarketmedia.asia.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\douglas-bagg-ArFB6Tz7it8-unsplash.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\images6885.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\images78.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\istockphoto-477447578-612x612.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\philsills-redbull.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\red-bull-3301415_960_720.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\Red-Bull-Can.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\snapshotimagehandler_824606123.jpeg" />
-    <Content Include="ML\Data_Set_Train\Regular\trieste-italy-may-aluminium-can-red-bull-energy-drink-sugarfree-red-bull-most-popular-energy-drink-world-148353519.jpg" />
-    <Content Include="ML\Data_Set_Train\Regular\UTB8nx6iwhHEXKJk43Jexh5eeXXa0.jpeg_350x350.jpeg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\41B+ZfpM-pL._SX425_.jpg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\9002490200237.jpg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\gettyimages-458105471-612x612.jpg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\red-bull-kuala-lumpur-malaysia-th-aug-sugar-free-light-blue-aluminum-can-white-background-84062695.jpg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\red-bull-sugar-free-250ml.jpg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\snapshotimagehandler_2003268962.jpeg" />
-    <Content Include="ML\Data_Set_Train\SugarFree\US_RBSF_250_Single_Unit_close_ambient_ORIGINAL_DRES.png" />
+    <Content Include="ML\assets\RG\19-1.jpg" />
+    <Content Include="ML\assets\RG\19-10.jpg" />
+    <Content Include="ML\assets\RG\19-11.jpg" />
+    <Content Include="ML\assets\RG\19-12.jpg" />
+    <Content Include="ML\assets\RG\19-13.jpg" />
+    <Content Include="ML\assets\RG\19-14.jpg" />
+    <Content Include="ML\assets\RG\19-15.jpg" />
+    <Content Include="ML\assets\RG\19-16.jpg" />
+    <Content Include="ML\assets\RG\19-17.jpg" />
+    <Content Include="ML\assets\RG\19-18.jpg" />
+    <Content Include="ML\assets\RG\19-19.jpg" />
+    <Content Include="ML\assets\RG\19-2.jpg" />
+    <Content Include="ML\assets\RG\19-3.jpg" />
+    <Content Include="ML\assets\RG\19-4.jpg" />
+    <Content Include="ML\assets\RG\19-5.jpg" />
+    <Content Include="ML\assets\RG\19-6.jpg" />
+    <Content Include="ML\assets\RG\19-7.jpg" />
+    <Content Include="ML\assets\RG\19-8.jpg" />
+    <Content Include="ML\assets\RG\19-9.jpg" />
+    <Content Include="ML\assets\SF\19 -2-10.jpg" />
+    <Content Include="ML\assets\SF\19-2-1.jpg" />
+    <Content Include="ML\assets\SF\19-2-11.jpg" />
+    <Content Include="ML\assets\SF\19-2-2.jpg" />
+    <Content Include="ML\assets\SF\19-2-3.jpg" />
+    <Content Include="ML\assets\SF\19-2-4.jpg" />
+    <Content Include="ML\assets\SF\19-2-5.jpg" />
+    <Content Include="ML\assets\SF\19-2-6.jpg" />
+    <Content Include="ML\assets\SF\19-2-7.jpg" />
+    <Content Include="ML\assets\SF\19-2-8.jpg" />
+    <Content Include="ML\assets\SF\19-2-9.png" />
     <Content Include="Resources\1.jpg" />
     <Content Include="Resources\100-1000316_wallpaper-red-bull.jpg" />
     <Content Include="Resources\1200px-RedBullEnergyDrink.svg.png" />
@@ -277,6 +280,7 @@
     <Content Include="Resources\unnamed.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ML\Workspace\" />
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +317,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SciSharp.TensorFlow.Redist.1.15.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SciSharp.TensorFlow.Redist.1.15.0\build\netstandard2.0\SciSharp.TensorFlow.Redist.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ML.CpuMath.1.4.0\build\netstandard2.0\Microsoft.ML.CpuMath.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.CpuMath.1.4.0\build\netstandard2.0\Microsoft.ML.CpuMath.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ML.1.4.0\build\netstandard2.0\Microsoft.ML.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.1.4.0\build\netstandard2.0\Microsoft.ML.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.ML.1.4.0\build\netstandard2.0\Microsoft.ML.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.1.4.0\build\netstandard2.0\Microsoft.ML.targets'))" />

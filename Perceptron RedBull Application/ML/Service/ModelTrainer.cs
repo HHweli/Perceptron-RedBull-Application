@@ -1,57 +1,115 @@
-﻿using Perceptron_RedBull_Application.ML.CustomType;
-using Microsoft.ML;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Perceptron_RedBull_Application.ML.Const;
+using System.IO;
+using Microsoft.ML;
+using static Microsoft.ML.DataOperationsCatalog;
+using Microsoft.ML.Vision;
+using Perceptron_RedBull_Application.ML.CustomType;
 
 namespace Perceptron_RedBull_Application.ML.Service
 {
     class ModelTrainer
     {
-        public static PredictionEngine<ImageData, ImagePrediction> Train()
+        public static ITransformer Train()
         {
-            string[] files = Directory.GetFiles(ML_Path.TRAIN_DATA_SET, "*", SearchOption.AllDirectories);
+            var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
+            var workspaceRelativePath = Path.Combine(projectDirectory, "ML", "Workspace");
+            var assetsRelativePath = Path.Combine(projectDirectory, "assets");
 
-            IEnumerable<ImageData> images = files.Select(file => new ImageData
+            MLContext mlContext = new MLContext();
+
+            IEnumerable<ImageData> images = LoadImagesFromDirectory(folder: assetsRelativePath, useFolderNameAsLabel: true);
+
+            IDataView imageData = mlContext.Data.LoadFromEnumerable(images);
+
+            IDataView shuffledData = mlContext.Data.ShuffleRows(imageData);
+
+            var preprocessingPipeline = mlContext.Transforms.Conversion.MapValueToKey(
+                    inputColumnName: "Label",
+                    outputColumnName: "LabelAsKey")
+                .Append(mlContext.Transforms.LoadRawImageBytes(
+                    outputColumnName: "Image",
+                    imageFolder: assetsRelativePath,
+                    inputColumnName: "ImagePath"));
+
+            IDataView preProcessedData = preprocessingPipeline
+                                .Fit(shuffledData)
+                                .Transform(shuffledData);
+
+            TrainTestData trainSplit = mlContext.Data.TrainTestSplit(data: preProcessedData, testFraction: 0.2);
+            TrainTestData validationTestSplit = mlContext.Data.TrainTestSplit(trainSplit.TestSet);
+
+            Console.WriteLine("trainSplit.TrainSet - " + trainSplit.TrainSet.Preview());
+            Console.WriteLine("validationTestSplit.TrainSet - " + validationTestSplit.TrainSet.Preview());
+
+            IDataView trainSet = trainSplit.TrainSet;
+            IDataView validationSet = validationTestSplit.TrainSet;
+            IDataView testSet = validationTestSplit.TestSet;
+
+            Console.WriteLine("trainSet - " + trainSet.Preview());
+            Console.WriteLine("validationSet - " + validationSet.Preview());
+            Console.WriteLine("testSet - " + testSet.Preview());
+
+            var classifierOptions = new ImageClassificationTrainer.Options()
             {
-                ImagePath = file,
-                Label = Directory.GetParent(file).Name
-            }).ToArray();
+                FeatureColumnName = "Image",
+                LabelColumnName = "LabelAsKey",
+                ValidationSet = validationSet,
+                Arch = ImageClassificationTrainer.Architecture.ResnetV2101,
+                MetricsCallback = (metrics) => Console.WriteLine(metrics),
+                TestOnTrainSet = false,
+                ReuseTrainSetBottleneckCachedValues = true,
+                ReuseValidationSetBottleneckCachedValues = true,
+                WorkspacePath = workspaceRelativePath
+            };
 
-            MLContext context = new MLContext();
+            var trainingPipeline = mlContext.MulticlassClassification.Trainers.ImageClassification(classifierOptions)
+                .Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel"));
 
-            IDataView imageData = context.Data.LoadFromEnumerable(images);
-            var imageDataShuffle = context.Data.ShuffleRows(imageData);
+            ITransformer trainedModel = trainingPipeline.Fit(trainSet);
 
-            var testTrainData = context.Data.TrainTestSplit(imageDataShuffle, testFraction: 0.2);
+            return trainedModel;
+        }
 
-            var validateData = context.Transforms.Conversion.MapValueToKey("LabelKey", "Label",
-                keyOrdinality: Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue)
-                .Fit(testTrainData.TestSet)
-                .Transform(testTrainData.TestSet);
+        private static void OutputPrediction(ModelOutput prediction)
+        {
+            string imageName = Path.GetFileName(prediction.ImagePath);
+            Console.WriteLine($"Image: {imageName} | Actual Value: {prediction.Label} | Predicted Value: {prediction.PredictedLabel}");
+        }
 
-            var pipeline = context.Transforms.Conversion.MapValueToKey("LabelKey", "Label",
-                keyOrdinality: Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue)
-                .Append(context.Model.ImageClassification(
-                    "ImagePath",
-                    "LabelKey",
-                    arch: Microsoft.ML.Vision.ImageClassificationTrainer.Architecture.ResnetV2101,
-                    epoch: 100,
-                    batchSize: 10
-                 ));
+        public static IEnumerable<ImageData> LoadImagesFromDirectory(string folder, bool useFolderNameAsLabel = true)
+        {
+            var files = Directory.GetFiles(folder, "*",
+                searchOption: SearchOption.AllDirectories);
 
-            var model = pipeline.Fit(testTrainData.TrainSet);
+            foreach (var file in files)
+            {
+                if ((Path.GetExtension(file) != ".jpg") && (Path.GetExtension(file) != ".png"))
+                    continue;
 
-            var predictions = model.Transform(testTrainData.TestSet);
+                var label = Path.GetFileName(file);
 
-            var metrics = context.MulticlassClassification.Evaluate(predictions, labelColumnName: "LabelKey",
-                predictedLabelColumnName: "PredictedLabel");
+                if (useFolderNameAsLabel)
+                    label = Directory.GetParent(file).Name;
+                else
+                {
+                    for (int index = 0; index < label.Length; index++)
+                    {
+                        if (!char.IsLetter(label[index]))
+                        {
+                            label = label.Substring(0, index);
+                            break;
+                        }
+                    }
+                }
 
-            Console.WriteLine($"Log loss - {metrics.LogLoss}");
-
-            return context.Model.CreatePredictionEngine<ImageData, ImagePrediction>(model);
+                yield return new ImageData()
+                {
+                    ImagePath = file,
+                    Label = label
+                };
+            }
         }
     }
 }
