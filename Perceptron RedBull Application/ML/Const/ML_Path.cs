@@ -9,7 +9,8 @@ namespace Perceptron_RedBull_Application.ML.Const
 {
     public class ML_Path
     {
-        public static string TRAIN_DATA_SET = Path.Combine(Environment.CurrentDirectory, "ML", "Data_Set_Train");
-        public static string TEST_DATA_SET = Path.Combine(Environment.CurrentDirectory, "ML", "Data_Set_Test");
+        public static string PROJ_DIRECTORY = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
+        public static string TRAIN_DATA_SET = Path.Combine(PROJ_DIRECTORY, "ML", "Data_Set_Train");
+        public static string TEST_DATA_SET = Path.Combine(PROJ_DIRECTORY, "ML", "Data_Set_Test");
     }
 }
