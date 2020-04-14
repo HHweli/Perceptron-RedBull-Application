@@ -83,9 +83,9 @@ namespace Perceptron_RedBull_Application
 
             Console.WriteLine("========= End of Object Detection ========");
 
-            Commons.Resource.TOTAL_COUNT = Directory.GetFiles(Path.Combine(outputFolder, "crp")).Length;
+            predictingImgPaths = Directory.GetFiles(Path.Combine(outputFolder, "crp"));
 
-            for (int i = 0; i < Commons.Resource.TOTAL_COUNT; i++)
+            for (int i = 0; i < predictingImgPaths.Length; i++)
             {
                 ModelOutput prediction = Predictor.ClassifySingleImage(predictingImgPaths[i], ModelTrainer.Train());
 
