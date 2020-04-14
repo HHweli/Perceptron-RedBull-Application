@@ -363,6 +363,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ML\assets\Model\model.onnx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -466,7 +467,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ML\assets\images\output\crp\" />
-    <Folder Include="ML\assets\Model\" />
     <Folder Include="ML\Workspace\" />
     <Folder Include="Model\" />
   </ItemGroup>

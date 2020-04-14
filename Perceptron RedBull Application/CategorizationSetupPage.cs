@@ -30,7 +30,7 @@ namespace Perceptron_RedBull_Application
         {
             var assetsRelativePath = @"../../../assets";
             string assetsPath = GetAbsolutePath(assetsRelativePath);
-            var modelFilePath = Path.Combine(assetsPath, "Model", "TinyYolo2_model.onnx");
+            var modelFilePath = Path.Combine(assetsPath, "Model", "model.onnx");
             var imagesFolder = Path.Combine(assetsPath, "images");
             var outputFolder = Path.Combine(assetsPath, "images", "output");
 
