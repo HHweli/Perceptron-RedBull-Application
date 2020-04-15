@@ -15,7 +15,7 @@ namespace Perceptron_RedBull_Application.ML.Service
         {
             var projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../"));
             var workspaceRelativePath = Path.Combine(projectDirectory, "ML", "Workspace");
-            var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets");
+            var assetsRelativePath = Path.Combine(projectDirectory, "ML", "assets", "Train");
 
             MLContext mlContext = new MLContext();
 

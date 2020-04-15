@@ -84,7 +84,7 @@ namespace Perceptron_RedBull_Application
 
                 for (int i = 0; i < predictingImgPaths.Length; i++)
                 {
-                    ModelOutput predict = Predictor.ClassifySingleImage(predictingImgPaths[i]);
+                    ModelOutput predict = Predictor.ClassifySingleImage(predictingImgPaths[i], ModelTrainer.Train());
 
                     string predictedLabel = predict != null ? predict.PredictedLabel : "";
 
