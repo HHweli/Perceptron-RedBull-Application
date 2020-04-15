@@ -298,6 +298,9 @@
       <DependentUpon>CategorizationSetupPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Commons\Resource.cs" />
+    <Compile Include="ML\CustomType\ImageData.cs" />
+    <Compile Include="ML\CustomType\ModelInput.cs" />
+    <Compile Include="ML\CustomType\ModelOutput.cs" />
     <Compile Include="HomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,18 +314,12 @@
       <DependentUpon>ManualEditPage.cs</DependentUpon>
     </Compile>
     <Compile Include="ML\Const\ML_Path.cs" />
-    <Compile Include="ML\CustomType\ImageData.cs" />
-    <Compile Include="ML\CustomType\ImageNetData.cs" />
-    <Compile Include="ML\CustomType\ImageNetPrediction.cs" />
-    <Compile Include="ML\CustomType\ModelInput.cs" />
-    <Compile Include="ML\CustomType\ModelOutput.cs" />
-    <Compile Include="ML\CustomType\ResponsePrediction.cs" />
-    <Compile Include="ML\CustomType\YoloOutputParser.cs" />
-    <Compile Include="ML\OnnxModelScorer.cs" />
+    <Compile Include="ML\CustomType\BoundingBox.cs" />
+    <Compile Include="ML\CustomType\ImageInput.cs" />
+    <Compile Include="ML\CustomType\ImagePredictions.cs" />
+    <Compile Include="ML\CustomType\OnnxModel.cs" />
     <Compile Include="ML\Service\ModelTrainer.cs" />
     <Compile Include="ML\Service\Predictor.cs" />
-    <Compile Include="ML\YoloParser\DimensionsBase.cs" />
-    <Compile Include="ML\YoloParser\YoloBoundingBox.cs" />
     <Compile Include="ModelTrainingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -363,7 +360,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ML\assets\Model\model.onnx" />
+    <None Include="ML\assets\Model\model.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
