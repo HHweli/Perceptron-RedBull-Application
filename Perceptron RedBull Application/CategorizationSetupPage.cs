@@ -27,6 +27,7 @@ namespace Perceptron_RedBull_Application
         static string modelFilePath = Path.Combine(assetsPath, "Model", "model.onnx");
         static string imagesFolder = Path.Combine(assetsPath, "images");
         static string outputFolder = Path.Combine(assetsPath, "images", "output");
+        static string crpFolder = Path.Combine(assetsPath, "images", "output", "crp");
 
         public CategorizationSetupPage()
         {
@@ -82,9 +83,11 @@ namespace Perceptron_RedBull_Application
 
                 predictingImgPaths = Directory.GetFiles(Path.Combine(outputFolder, "crp"));
 
+                var trainedModel = ModelTrainer.Train();
+
                 for (int i = 0; i < predictingImgPaths.Length; i++)
                 {
-                    ModelOutput predict = Predictor.ClassifySingleImage(predictingImgPaths[i], ModelTrainer.Train());
+                    ModelOutput predict = Predictor.ClassifySingleImage(predictingImgPaths[i], trainedModel);
 
                     string predictedLabel = predict != null ? predict.PredictedLabel : "";
 
@@ -118,34 +121,40 @@ namespace Perceptron_RedBull_Application
 
         private void addPredictImgBtn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "Image files ((*.jpg, *.png) | *.jpg; *.png";
-
-            if (openFile.ShowDialog() == DialogResult.OK)
+            try
             {
-                // Getting the image file name from path
-                String[] paths = openFile.FileName.Split('\\');
-                String fileName = paths[paths.Length - 1];
+                OpenFileDialog openFile = new OpenFileDialog();
+                openFile.Filter = "Image files ((*.jpg, *.png) | *.jpg; *.png";
 
-                Image image = (Image)Image.FromFile(openFile.FileName).Clone();
-                image.Save(Path.Combine(imagesFolder, fileName));
-                image.Dispose();
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    // Getting the image file name from path
+                    String[] paths = openFile.FileName.Split('\\');
+                    String fileName = paths[paths.Length - 1];
 
-                // Saving the predicting image for later use
-                Commons.Resource.PREDICTING_IMAGE = new Bitmap(openFile.FileName);
+                    Image image = (Image)Image.FromFile(openFile.FileName).Clone();
+                    image.Save(Path.Combine(imagesFolder, fileName));
+                    image.Dispose();
 
-                // Saving the predicting image name for later use
-                Commons.Resource.PREDICTING_IMAGE_NAME = fileName;
+                    // Saving the predicting image for later use
+                    Commons.Resource.PREDICTING_IMAGE = new Bitmap(openFile.FileName);
 
-                // Saving the predicting image path
-                Commons.Resource.PREDICTING_IMAGE_PATH = Path.Combine(imagesFolder, fileName);
+                    // Saving the predicting image name for later use
+                    Commons.Resource.PREDICTING_IMAGE_NAME = fileName;
 
-                predictingImgNameLbl.Text = Commons.Resource.PREDICTING_IMAGE_NAME;
-                predictingImageBox.Image = new Bitmap(openFile.FileName);
+                    // Saving the predicting image path
+                    Commons.Resource.PREDICTING_IMAGE_PATH = Path.Combine(imagesFolder, fileName);
 
-                openFile.Dispose();
+                    predictingImgNameLbl.Text = Commons.Resource.PREDICTING_IMAGE_NAME;
+                    predictingImageBox.Image = new Bitmap(openFile.FileName);
 
-                categorizeBtn.Enabled = true;
+                    openFile.Dispose();
+
+                    categorizeBtn.Enabled = true;
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
