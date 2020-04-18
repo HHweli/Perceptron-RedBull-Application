@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using Perceptron_RedBull_Application.ML.Service;
 
 namespace Perceptron_RedBull_Application
 {
@@ -61,6 +62,11 @@ namespace Perceptron_RedBull_Application
                     MessageBox.Show("There must be atleast one image file in the folder!\nAllowed only .jpg .jpeg .png", "Training Image Set");
                 }
             }
+        }
+
+        private void trainBtn_Click(object sender, EventArgs e)
+        {
+            ModelTrainer.Train();
         }
     }
 }
